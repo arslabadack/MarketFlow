@@ -7,12 +7,22 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class ItemAdapter(private val itemList:List<Item>): RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
+class ItemAdapter(private val itemList:List<Item>,
+    val listener: OnItemClickListener): RecyclerView.Adapter<ItemAdapter.ItemViewHolder>() {
 
-    class ItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    inner class ItemViewHolder(itemView: View): RecyclerView.ViewHolder(itemView), View.OnClickListener{
         val imageView:ImageView = itemView.findViewById(R.id.imageView)
         val titleTextView:TextView = itemView.findViewById(R.id.titleTextView)
         val infoTextView: TextView = itemView.findViewById(R.id.infoTextView)
+
+
+        init{
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            listener.onItemClick(adapterPosition)
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemViewHolder {
@@ -23,7 +33,7 @@ class ItemAdapter(private val itemList:List<Item>): RecyclerView.Adapter<ItemAda
     override fun onBindViewHolder(holder: ItemViewHolder, position: Int) {
         val currentItem = itemList[position]
         holder.imageView.setImageResource(currentItem.image)
-        holder.titleTextView.setText(currentItem.title)
+        holder.titleTextView.setText(currentItem.product)
         holder.infoTextView.setText(currentItem.info)
     }
 
