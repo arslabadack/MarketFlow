@@ -25,14 +25,14 @@
             android:padding="4dp">
 
             <TextView
-                android:id="@+id/titleTextView"
+                android:id="@+id/productTextView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="18sp"
+                android:textSize="20dp"
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:padding="8dp"
-                android:text="Titulo"/>
+                android:text="Produto"/>
 
             <TextView
                 android:id="@+id/infoTextView"
@@ -41,7 +41,15 @@
                 android:padding="8dp"
                 android:text="informações"/>
 
-
+            <TextView
+                android:id="@+id/quantityTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="8dp"
+                android:text="Quantidade"
+                android:textAlignment="textEnd"
+                android:textStyle="bold"
+                android:textSize="18dp"/>
 
         </androidx.appcompat.widget.LinearLayoutCompat>
 

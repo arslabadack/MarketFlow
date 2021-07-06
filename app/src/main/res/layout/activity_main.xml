@@ -11,10 +11,38 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="8dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="200dp"
         tools:listitem="@layout/item">
 
     </androidx.recyclerview.widget.RecyclerView>
+
+    <EditText
+        android:id="@+id/productTxtEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/produto"
+        android:textAlignment="center"
+        app:layout_constraintStart_toEndOf="@id/recyclerView"
+        app:layout_constraintTop_toBottomOf="@id/recyclerView"/>
+
+    <EditText
+        android:id="@+id/productInfoTxtEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/descri_o"
+        android:textAlignment="center"
+        app:layout_constraintStart_toEndOf="@+id/productTxtEdit"
+        app:layout_constraintTop_toBottomOf="@+id/productTxtEdit"/>
+
+    <EditText
+        android:id="@+id/productQuantityTxtEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/quantidade"
+        android:textAlignment="center"
+        app:layout_constraintStart_toEndOf="@+id/productInfoTxtEdit"
+        app:layout_constraintTop_toBottomOf="@+id/productInfoTxtEdit"/>
+
 
     <Button
         android:id="@+id/insertButton"
@@ -25,10 +53,26 @@
         android:textStyle="bold"
         android:textSize="15dp"
         android:textColor="@color/black"
-        android:onClick="insertButton"
+        android:onClick="insertProduct"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="12dp"></Button>
+
+    <Button
+        android:id="@+id/editButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:layout_marginBottom="12dp"
+        android:backgroundTint="@color/watermelon"
+        android:onClick="editProduct"
+        android:text="@string/edit"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/removeButton"
+        app:layout_constraintStart_toEndOf="@+id/insertButton"></Button>
 
     <Button
         android:id="@+id/removeButton"
@@ -39,7 +83,7 @@
         android:textStyle="bold"
         android:textSize="15dp"
         android:textColor="@color/black"
-        android:onClick="removeButton"
+        android:onClick="removeProduct"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_margin="12dp"></Button>
