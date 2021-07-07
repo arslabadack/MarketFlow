@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.marketflow.databinding.ActivityMainBinding
 import java.util.ArrayList
 
-class MainActivity : AppCompatActivity(), OnItemClickListener {
+abstract class MainActivity : AppCompatActivity(), OnItemClickListener {
 
     private val itemList: ArrayList<Item> = generateList(1)
     private val adapter = ItemAdapter(itemList, this)
@@ -28,20 +28,24 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
         binding.recyclerView.setHasFixedSize(true)
     }
 
-    fun addProduct():Item?{
+    fun insertProduct(view: View) {
         val product: EditText = binding.productTxtEdit
         val information: EditText = binding.productInfoTxtEdit
         val quantity: EditText = binding.productQuantityTxtEdit
 
-        val newProduct = Item(R.drawable.market_cart, product.text.toString(),information.text.toString(), quantity.text.toString())
-
-        return newProduct
-    }
-
-
-    fun insertProduct(view: View) {
-        val productAdd: Item? = addProduct()
-        if (productAdd != null) {
+        val productAdd: Item? = Item(
+            R.drawable.market_cart,
+            product.text.toString(),
+            information.text.toString(),
+            quantity.text.toString()
+        )
+        if (productAdd?.product?.isEmpty()!!) {
+            Toast.makeText(this, "Qual o produto mesmo?", Toast.LENGTH_SHORT).show()
+        } else if (productAdd?.info.isEmpty()!!) {
+            Toast.makeText(this, "Descreva seu produto", Toast.LENGTH_SHORT).show()
+        } else if (productAdd?.quantity.isEmpty()!!) {
+            Toast.makeText(this, "Vamos comprar quanto?", Toast.LENGTH_SHORT).show()
+        }else {
             itemList.add(productAdd)
         }
         adapter.notifyItemInserted(itemList.size)
@@ -50,18 +54,14 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
 
     }
 
-    fun editProduct(view: View) {}
+    fun editProduct(view: View) {
 
-    fun removeProduct(view: View) {}
+    }
 
-
-
-
-
-
-
-
-
+    fun removeProduct(view: View) {
+        var clickedPosition: Item = onItemClick()
+        itemList.remove(clickedPosition)
+    }
 
 
     fun generateList (size: Int): ArrayList<Item>{
@@ -73,12 +73,12 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
         return list
     }
 
-    override fun onItemClick(position: Int) {
-        Toast.makeText(this, "Clicked on ${itemList[position].product}", Toast.LENGTH_SHORT).show()
+    override fun onItemClick(position: Int): Item{
+        Toast.makeText(this, "Item $position clicked", Toast.LENGTH_SHORT).show()
+        val clickedItem: Item = itemList[position]
+
         adapter.notifyItemChanged(position)
 
+        return clickedItem
     }
-
-
-
 }
