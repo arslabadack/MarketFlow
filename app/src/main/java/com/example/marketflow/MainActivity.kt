@@ -76,12 +76,12 @@ class MainActivity : AppCompatActivity(), OnItemClickListener {
     }
 
     fun removeProduct(view: View) {
-        if (productIndex != 0){
+        if (productIndex != -1){
             itemList.removeAt(productIndex)
             adapter.notifyItemRemoved(productIndex)
 
             Toast.makeText(this, "Produto removido", Toast.LENGTH_LONG).show()
-            productIndex = 0
+            productIndex = -1
         }else {
             Toast.makeText(this, "Qual produto quer remover?", Toast.LENGTH_SHORT).show()
         }

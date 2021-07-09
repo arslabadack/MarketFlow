@@ -47,7 +47,6 @@
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:text="Quantidade"
-                android:textAlignment="textEnd"
                 android:textStyle="bold"
                 android:textSize="18dp"/>
 
