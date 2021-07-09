@@ -39,6 +39,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/quantidade"
+        android:inputType="number"
         android:textAlignment="center"
         app:layout_constraintStart_toEndOf="@+id/productInfoTxtEdit"
         app:layout_constraintTop_toBottomOf="@+id/productInfoTxtEdit"/>

@@ -3,7 +3,6 @@ package com.example.marketflow
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.marketflow.databinding.ItemBinding
 
@@ -23,7 +22,7 @@ class ItemAdapter(private val itemList:List<Item>,
         }
 
         override fun onClick(v: View?) {
-            listener.onItemClick()
+            listener.onItemClick(adapterPosition)
         }
     }
 
